@@ -6,7 +6,7 @@
 
     @foreach($projects as $project)
         <li>
-        {{$project->title}} / <i>{{$project->created_at}}</i>
+        <a href = "/projects/{{$project->id}}/edit">{{$project->title}} / <i>{{$project->created_at}}</i></a>
         </li>
 
     @endforeach

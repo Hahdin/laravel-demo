@@ -60,4 +60,23 @@ use Illuminate\Support\Facades\Schema;
      ],
    }
 >>>
+
+# make a new controller with resources and model
+php artisan make:controller ProjectController -r -m Project
 ```
+
+## Route Resource
+```php
+
+Route::resource('projects', 'ProjectController');
+
+// gives you ...
+// Route::get('/projects', 'ProjectController@index');
+// Route::get('/projects/create', 'ProjectController@create');
+// Route::get('/projects/{project}', 'ProjectController@show');
+// Route::post('/projects', 'ProjectController@store');
+// Route::get('/projects/{project}/edit', 'ProjectController@edit');
+// Route::patch('/projects/{project}', 'ProjectController@update');
+// Route::delete('/projects/{project}', 'ProjectController@destroy');
+```
+

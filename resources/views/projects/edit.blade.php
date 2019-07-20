@@ -32,7 +32,7 @@
             @method('delete')
         </div>
         <div>
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('are you sure?');">Delete</button>
         </div>
     </form>
 @endsection

@@ -9,11 +9,21 @@
         </div>
         <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" class="form-control" name="title" placeholder="Project Title">
+            <input
+                type="text"
+                class="form-control {{$errors->has('title') ? 'border-danger' : ''}}"
+                name="title"
+                placeholder="Project Title"
+                value="{{old('title')}}" >
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
-            <input type="textarea" class="form-control" name="description" placeholder="Project Description">
+            <input
+                type="textarea"
+                class="form-control {{$errors->has('description') ? 'border-danger' : ''}}"
+                name="description"
+                placeholder="Project Description"
+                value="{{old('description')}}" >
         </div>
         <!-- <div class="form-group form-check">
             <label class="form-check-label">
@@ -23,6 +33,13 @@
         <div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $err)
+                <li>{{$err}}</li>
+            @endforeach
+        </div>
+        @endif
     </form>
 
 @endsection

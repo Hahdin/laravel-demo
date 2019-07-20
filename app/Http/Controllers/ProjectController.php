@@ -36,10 +36,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $project = new Project();
-        $project->title = request('title');
-        $project->description = request('description');
-        $project->save();
+        Project::create(
+            $request->validate([
+            'title' =>['required','min:3'],
+            'description' =>['required','min:3'],
+        ]));
         return redirect('/projects');
     }
 
@@ -51,7 +52,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        //dd($project);
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -75,9 +77,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->title = request('title');
-        $project->description = request('description');
-        $project->save();
+        $project->update(request(['title', 'description']));
         return redirect('/projects');
     }
 

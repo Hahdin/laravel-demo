@@ -16,3 +16,15 @@ nav{
     font-size: 32px;
     text-shadow: 1px 1px 3px black;
 }
+
+.is-completed{
+    text-decoration: line-through;
+    font-family: Bonbon;
+    font-size: 32px;
+    text-shadow: 2px 2px 3px blue;
+}
+.not-completed{
+    font-size: 38px;
+    text-shadow: 2px 2px 3px black;
+    font-family: 'Black And White Picture';
+}

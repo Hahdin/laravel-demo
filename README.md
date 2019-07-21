@@ -63,6 +63,10 @@ use Illuminate\Support\Facades\Schema;
 
 # make a new controller with resources and model
 php artisan make:controller ProjectController -r -m Project
+
+
+# model, factory, and migration
+php artisan make:model Task -m -f
 ```
 
 ## Route Resource
@@ -79,3 +83,11 @@ Route::resource('projects', 'ProjectController');
 // Route::patch('/projects/{project}', 'ProjectController@update');
 // Route::delete('/projects/{project}', 'ProjectController@destroy');
 ```
+
+## MySQL Workbench
+
+if manually entering datetimes, use
+```
+\func now() 
+``` 
+or the result will be in in quotes, which will fail. [Link](http://tol8.blogspot.com/2014/03/enter-now-for-datetime-in-mysql.html)

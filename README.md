@@ -79,4 +79,3 @@ Route::resource('projects', 'ProjectController');
 // Route::patch('/projects/{project}', 'ProjectController@update');
 // Route::delete('/projects/{project}', 'ProjectController@destroy');
 ```
-

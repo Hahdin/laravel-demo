@@ -1,0 +1,18 @@
+h1{
+    box-shadow: 1px 1px 2px black;
+    text-shadow: 2px 2px 3px black;
+    padding-left: 1em;
+    padding-bottom: 0.2em;
+    font-family: Diplomata;
+}
+div{
+    font-family: Aclonica;
+}
+button{
+    font-family: Bonbon;
+}
+nav{
+    font-family: 'Black And White Picture';
+    font-size: 32px;
+    text-shadow: 1px 1px 3px black;
+}

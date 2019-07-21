@@ -10,11 +10,21 @@
         </div>
         <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" class="form-control" name="title" placeholder="Project Title" value="{{$project->title}}">
+            <input
+                type="text"
+                class="form-control"
+                name="title"
+                placeholder="Project Title"
+                value="{{$project->title}}">
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
-            <input type="textarea" class="form-control" name="description" placeholder="Project Description" value="{{$project->description}}">
+            <input
+                type="textarea"
+                class="form-control"
+                name="description"
+                placeholder="Project Description"
+                value="{{$project->description}}">
         </div>
         <!-- <div class="form-group form-check">
             <label class="form-check-label">

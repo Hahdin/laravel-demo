@@ -13,17 +13,6 @@
         </div>
         <div class="card-footer">id: {{$project->id}}</div>
     </div>
-    <!-- <div class="card">
-    <div class="card-header"><a href = "/projects/{{$project->id}}">{{$project->title}}</a></div>
-    <div class="card-body">
-        Content : {{$project->description}} / <i>{{$project->created_at}}</i>
-    </div>
-    <div class="card-footer">id: {{$project->id}}</div>
-    </div>
-        <li>
-            <a href = "/projects/{{$project->id}}">{{$project->title}} / <i>{{$project->created_at}}</i></a>
-        </li>
- -->
     @endforeach
     </div>
 @endsection

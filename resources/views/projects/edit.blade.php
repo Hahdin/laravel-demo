@@ -4,10 +4,8 @@
 @section('content')
     <h1>Edit Project</h1>
     <form method="POST" action="/projects/{{$project->id}}">
-        <div>
-            @csrf
-            @method('patch')
-        </div>
+        @csrf
+        @method('patch')
         <div class="form-group">
             <label for="title">Title:</label>
             <input
@@ -26,21 +24,14 @@
                 placeholder="Project Description"
                 value="{{$project->description}}">
         </div>
-        <!-- <div class="form-group form-check">
-            <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Remember me
-            </label>
-        </div> -->
         <div>
             <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </form>
     <hr/>
     <form method="POST" action="/projects/{{$project->id}}">
-        <div>
-            @csrf
-            @method('delete')
-        </div>
+        @csrf
+        @method('delete')
         <div>
             <button type="submit" class="btn btn-danger" onclick="return confirm('are you sure?');">Delete</button>
         </div>

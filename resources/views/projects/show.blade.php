@@ -31,7 +31,7 @@
                 <label for="description">New Task</label>
                 <input
                     type="text"
-                    class="form-control"
+                    class="form-control {{$errors->has('description') ? 'border-danger' : 'border-info'}}"
                     name="description"
                     value= "{{old('description')}}"
                     placeholder="New Task">

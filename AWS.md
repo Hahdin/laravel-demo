@@ -194,12 +194,15 @@ server {
 
 Once our file is created, we need to create a symlink (basically, enable our site’s configuration) in our sites-enabled directory:
 ```
-sudo ln -s /etc/nginx/sites-available/myapp.site /etc/nginx/sites-enabled/laravel-demo.site
+sudo ln -s /etc/nginx/sites-available/myapp.site /etc/nginx/sites-enabled/myapp.site
 ```
 Once you run the command above, you will have a symlink that will “point to” our original file in sites-available and will get loaded once we restart our nginx service or reload its configuration. Let’s restart our nginx service like so:
 ```
 sudo service nginx restart
 ```
+
+>> This didn't work for me (I don't think), as I mentioned above I needed to re-insert the modified server block into the nginx.conf file to get it working. Something to look into...
+
 ## Setting up php-fpm
 
 Now that we have our config file setup, we need to make sure our php-fpm package is configured to listen on 127.0.0.1:8080 (or any other port that is not in use besides 8080) instead of listening on a UNIX socket. You can do it the other way around, but we’ll do it through the local loopback.  In addition, we need to change the default user and group that php-fpm uses to match that of nginx. We can do so by opening the following file:

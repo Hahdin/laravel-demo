@@ -18,21 +18,11 @@ update the server
 sudo yum update && sudo yum upgrade
 ```
 Then install:
+> Note: If you are using a DaaS or a different database, remove mysql57-server from the list. For this project I am using a MySQL instance hosted on AWS RDS.
+
 ```
 sudo yum install php73 php73-mbstring php73-xml php73-fpm php73-pdo php73-mysqlnd mysql57-server nginx git
 ```
-
-
-<!-- ## Amazon Linux 2 server
-I installed on an AL2 server and the PHP packages can be installed like this:
-```bash
-# enable the package
-sudo amazon-linux-extras enable php7.3 
-sudo amazon-linux-extras install nginx1.12
-
-# install
-sudo yum install php php-mbstring php-xml php-fpm php-pdo php-mysqlnd mysql57-server git
-``` -->
 
 Confirm PHP installation and version.
 ```
@@ -63,6 +53,8 @@ sudo service php-fpm start; sudo service nginx start;
 No news (errors) is good news. At this point, you can paste your public IP of your EC2 instance into a browser and should see the NGINX default page.
 
 ## MySQL
+> Ignore if you are using a different database.
+
 Lets see if MySQL was installed okay:
 ```
 sudo service mysqld status

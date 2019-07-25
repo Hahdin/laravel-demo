@@ -91,7 +91,6 @@ Assuming you have a git repo, just clone it.
 > note that we are cloning our repo to our home directory, and then moving it to /var/www/html/yourappfolder so that our files and folders are created belonging to our user and group [ec2-user].
 
 ```bash
-# switch to the html folder
 git clone https://github.com/yourname/yourrepo.git ~/yourappfolder
 sudo mv ~/yourappfolder /var/www/html/
  ```

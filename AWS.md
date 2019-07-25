@@ -113,7 +113,7 @@ include  /etc/nginx/sites-enabled/*;
     ...
 }
 ```
-The first line adds precedence to our PHP index file over its .html and .htmcounterparts. The second line includes all the configuration files located in /etc/nginx/sites-enabled/, directory which as of now, does not exist.
+The first line adds precedence to our PHP index file over its .html and .htm counterparts. The second line includes all the configuration files located in /etc/nginx/sites-enabled/, directory which as of now, does not exist.
 
 In addition, we need to delete the existing server block nested inside our http block. Make sure you do that, else our config might not work properly.
 
@@ -180,8 +180,6 @@ server {
 }
 ```
 
->> Note: I needed to paste the above into my /nginx.conf to get it working
-
 
 Once our file is created, we need to create a symlink (basically, enable our site’s configuration) in our sites-enabled directory:
 ```
@@ -192,7 +190,6 @@ Once you run the command above, you will have a symlink that will “point to”
 sudo service nginx restart
 ```
 
->> This didn't work for me (I don't think), as I mentioned above I needed to re-insert the modified server block into the nginx.conf file to get it working. Something to look into...
 
 ## Setting up php-fpm
 
@@ -220,6 +217,7 @@ sudo service php-fpm restart
 ```
 
 ## Setting up MySQL
+> Ignore if you are using a different database.
 
 ### secure our MySQL installation
 ```
@@ -312,6 +310,8 @@ sudo chmod 776 /var/www/html/myapp/storage/logs/laravel.log
 ```
 
 > **Note**: Make sure there is a .env file in your project directory. If you cloned if from a git repo, it should not have one (it better not) so make sure you create one and populate it with the required information.
+
+You should now be able to see your app in the browser. 
 
 
 

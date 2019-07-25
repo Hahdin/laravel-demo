@@ -185,7 +185,7 @@ server {
 
 Once our file is created, we need to create a symlink (basically, enable our site’s configuration) in our sites-enabled directory:
 ```
-sudo ln -s /etc/nginx/sites-available/myapp.site /etc/nginx/sites-enabled/myapp.site
+sudo ln -s /etc/nginx/sites-available/yourappname.site /etc/nginx/sites-enabled/yourappname.site
 ```
 Once you run the command above, you will have a symlink that will “point to” our original file in sites-available and will get loaded once we restart our nginx service or reload its configuration. Let’s restart our nginx service like so:
 ```

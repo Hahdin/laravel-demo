@@ -8,6 +8,10 @@ use App\Project;
 
 class ProjectTasksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Update the specified resource in storage.
      *

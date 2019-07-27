@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $user = auth()->user();
+        $projects = $user->projects;
         return view('projects.index', compact('projects'));
     }
 
@@ -41,11 +43,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        Project::create(
-            $request->validate([
+        $validated = $request->validate([
             'title' =>['required','min:3'],
             'description' =>['required','min:3'],
-        ]));
+        ]);
+
+        $validated['user_id'] = auth()->user()->id;
+        Project::create($validated);
         return redirect('/projects');
     }
 
@@ -57,7 +61,11 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        $user = auth()->user();
+        $view = $user->id == $project->user_id ?
+            view('projects.show', compact('project')) :
+            redirect('/projects');
+        return $view;
     }
 
     /**
@@ -68,7 +76,11 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $user = auth()->user();
+        $view = $user->id == $project->user_id ?
+            view('projects.edit', compact('project')) :
+            redirect('/projects');
+        return $view;
     }
 
     /**
@@ -80,7 +92,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->update(request(['title', 'description']));
+        $user = auth()->user();
+        if ($user->id == $project->user_id)
+        {
+            $project->update(request(['title', 'description']));
+        }
         return redirect('/projects');
     }
 
@@ -92,7 +108,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $project->delete();
+        $user = auth()->user();
+        if ($user->id == $project->user_id)
+        {
+            $project->delete();
+        }
         return redirect('/projects');
     }
 }

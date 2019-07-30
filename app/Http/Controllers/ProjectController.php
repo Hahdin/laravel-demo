@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Project;
+use App\Mail\ProjectCreated;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -50,6 +51,10 @@ class ProjectController extends Controller
 
         $validated['user_id'] = auth()->user()->id;
         Project::create($validated);
+
+        \Mail::to('me.you@mail.com')->send(
+            new ProjectCreated()
+        );
         return redirect('/projects');
     }
 

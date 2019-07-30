@@ -61,11 +61,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $user = auth()->user();
-        $view = $user->id == $project->user_id ?
-            view('projects.show', compact('project')) :
-            redirect('/projects');
-        return $view;
+        $this->authorize('update', $project);
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -76,11 +73,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $user = auth()->user();
-        $view = $user->id == $project->user_id ?
-            view('projects.edit', compact('project')) :
-            redirect('/projects');
-        return $view;
+        $this->authorize('update', $project);
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -92,13 +86,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $user = auth()->user();
-        if ($user->id == $project->user_id)
-        {
-            $project->update(request(['title', 'description']));
-        }
+        $this->authorize('update', $project);
+        $project->update(request(['title', 'description']));
         return redirect('/projects');
-    }
+}
 
     /**
      * Remove the specified resource from storage.
@@ -108,11 +99,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $user = auth()->user();
-        if ($user->id == $project->user_id)
-        {
-            $project->delete();
-        }
+        $this->authorize('update', $project);
+        $project->delete();
         return redirect('/projects');
-    }
+}
 }
